@@ -256,7 +256,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="llama-cli.html">2. Using the LLaMA C++ CLI</a>
+        <a href="00-llama-cpp-basics.html">2. Using the LLaMA C++ CLI</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -268,7 +268,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="llama-server.html">3. Serving models with LLaMA C++ Server</a>
+        <a href="llama-cli.html">3. Using the LLaMA C++ CLI</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -280,7 +280,19 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="llama-quantize.html">4. Quantizing models</a>
+        <a href="llama-server.html">4. Serving models with LLaMA C++ Server</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush6">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading6">
+        <a href="llama-quantize.html">5. Quantizing models</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -408,7 +420,7 @@ reinforce the objectives.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -439,7 +451,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -466,7 +478,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -528,7 +540,371 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section><section id="aio-llama-cli"><p>Content from <a href="llama-cli.html">Using the LLaMA C++ CLI</a></p>
+</section></section><section id="aio-00-llama-cpp-basics"><p>Content from <a href="00-llama-cpp-basics.html">Using the LLaMA C++ CLI</a></p>
+<hr>
+<p>Last updated on 2024-10-29 |
+
+        <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/00-llama-cpp-basics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 15 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>question 1</li>
+<li>question 2</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>objective 1</li>
+<li>objective 2</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section level1">
+<h1 id="getting-started-with-llama-c">Getting started with LLaMA C++<a class="anchor" aria-label="anchor" href="#getting-started-with-llama-c"></a>
+</h1>
+<div class="section level2">
+<h2 id="checking-your-llama-c-installation">Checking your LLaMA C++ installation<a class="anchor" aria-label="anchor" href="#checking-your-llama-c-installation"></a>
+</h2>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">%%bash</span> </span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">which</span> llama-cli</span></code></pre>
+</div>
+</div>
+<div class="section level2">
+<h2 id="getting-help">Getting help!<a class="anchor" aria-label="anchor" href="#getting-help"></a>
+</h2>
+<p>You can easily display a help message showing all available options
+and their default values. This is particularly useful for checking the
+latest options and default values, as they can change frequently, and
+the information in this document may become outdated.</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="at">--help</span></span></code></pre>
+</div>
+</div>
+<div class="section level2">
+<h2 id="downloading-a-model">Downloading a model<a class="anchor" aria-label="anchor" href="#downloading-a-model"></a>
+</h2>
+<div class="section level3">
+<h3 id="manually-downloading-a-model-from-a-url">Manually downloading a model from a URL<a class="anchor" aria-label="anchor" href="#manually-downloading-a-model-from-a-url"></a>
+</h3>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="va">MODEL_URL</span><span class="op">=</span>https://huggingface.co/ggml-org/gemma-1.1-7b-it-Q4_K_M-GGUF/resolve/main/gemma-1.1-7b-it.Q4_K_M.gguf</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="ex">curl</span> <span class="at">--location</span> <span class="at">--output</span> ../models/gemma-1.1-7b-it.Q4_K_M.gguf <span class="va">$MODEL_URL</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>MODEL <span class="op">=</span> <span class="st">"../models/gemma-1.1-7b-it.Q4_K_M.gguf"</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="downloading-a-model-from-a-url">Downloading a model from a URL<a class="anchor" aria-label="anchor" href="#downloading-a-model-from-a-url"></a>
+</h3>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="bu">export</span> <span class="va">LLAMA_CACHE</span><span class="op">=</span><span class="st">"../models"</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="va">MODEL_URL</span><span class="op">=</span>https://huggingface.co/ggml-org/gemma-1.1-7b-it-Q4_K_M-GGUF/resolve/main/gemma-1.1-7b-it.Q4_K_M.gguf</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="at">--model-url</span> <span class="st">"</span><span class="va">$MODEL_URL</span><span class="st">"</span> <span class="at">--prompt</span> <span class="st">"Once upon a time"</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>MODEL <span class="op">=</span> <span class="st">"../models/gemma-1.1-7b-it.Q4_K_M.gguf"</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="downloading-a-model-from-a-hugging-face-repository">Downloading a model from a Hugging Face repository<a class="anchor" aria-label="anchor" href="#downloading-a-model-from-a-hugging-face-repository"></a>
+</h3>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">%%bash</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="bu">export</span> <span class="va">LLAMA_CACHE</span><span class="op">=</span><span class="st">"../models"</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="va">HF_REPO</span><span class="op">=</span><span class="st">"ggml-org/gemma-1.1-7b-it-Q4_K_M-GGUF"</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="va">HF_MODEL_FILE</span><span class="op">=</span><span class="st">"gemma-1.1-7b-it.Q4_K_M.gguf"</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="at">--hf-repo</span> <span class="st">"</span><span class="va">$HF_REPO</span><span class="st">"</span> <span class="at">--hf-file</span> <span class="st">"</span><span class="va">$HF_MODEL_FILE</span><span class="st">"</span> <span class="at">--prompt</span> <span class="st">"Once upon a time"</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>MODEL <span class="op">=</span> <span class="st">"../models/gemma-1.1-7b-it.Q4_K_M.gguf"</span></span></code></pre>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="basic-text-generation">Basic text generation<a class="anchor" aria-label="anchor" href="#basic-text-generation"></a>
+</h2>
+<div class="section level3">
+<h3 id="simple-prompting-using---prompt">Simple prompting using <code>--prompt</code>
+<a class="anchor" aria-label="anchor" href="#simple-prompting-using---prompt"></a>
+</h3>
+<p>After downloading the model file we can just pass the path to the
+model file as a command line argument using <code>-m</code> or
+<code>--model</code> to specify the path to the GGUF model file together
+with a prompt using the <code>--prompt</code> argument to generate a
+response.</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">%%bash</span> <span class="at">-s</span> <span class="st">"</span><span class="va">$MODEL</span><span class="st">"</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>    <span class="at">--model</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>    <span class="at">--prompt</span> <span class="st">"Once upon a time"</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="more-elaborate-prompting-using---file">More elaborate prompting using <code>--file</code>
+<a class="anchor" aria-label="anchor" href="#more-elaborate-prompting-using---file"></a>
+</h3>
+<p>You can also prompt a model by providing one or more prompts stored
+in a file using the <code>--file</code> option. This is useful when you
+are working with longer prompts.</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>language <span class="op">=</span> <span class="st">"English"</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>tone_of_voice <span class="op">=</span> <span class="st">"Informative"</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>topic <span class="op">=</span> <span class="st">"Computer Science"</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>writing_style <span class="op">=</span> <span class="st">"Conversational"</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>prompt_template <span class="op">=</span> <span class="ss">f"""Please ignore all previous instructions. Please respond </span><span class="ch">\</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="ss">only in the </span><span class="sc">{</span>language<span class="sc">}</span><span class="ss"> language. You are a Twitter influencer with a large </span><span class="ch">\</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="ss">following. You have a </span><span class="sc">{</span>tone_of_voice<span class="sc">}</span><span class="ss"> tone of voice. You have a </span><span class="ch">\</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="sc">{</span>writing_style<span class="sc">}</span><span class="ss"> writing style. Do not self reference. Do not explain what you </span><span class="ch">\</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="ss">are doing. Please create a thread about </span><span class="sc">{</span>topic<span class="sc">}</span><span class="ss">. Add emojis to the thread </span><span class="ch">\</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="ss">when appropriate. The character count for each thread should be between 270 </span><span class="ch">\</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="ss">to 280 characters. Your content should be casual, informative, and an </span><span class="ch">\</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="ss">engaging Twitter thread. Please use simple and understandable words. Please </span><span class="ch">\</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="ss">include statistics, personal experience, and fun facts in the thread. Please </span><span class="ch">\</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="ss">add relevant hashtags to the post and encourage the readers join the </span><span class="ch">\</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="ss">conversation.</span></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="ss">"""</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="bu">print</span>(prompt_template)</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>PROMPT_FILE <span class="op">=</span> <span class="st">"../prompts/engaging-twitter-thread.txt"</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(PROMPT_FILE, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>    f.write(prompt_template)</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">%%bash</span> <span class="at">-s</span> <span class="st">"</span><span class="va">$MODEL</span><span class="st">"</span> <span class="st">"</span><span class="va">$PROMPT_FILE</span><span class="st">"</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="dt">\</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>    <span class="at">--model</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>    <span class="at">--file</span>  <span class="st">"</span><span class="va">$2</span><span class="st">"</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="dont-want-to-always-return-your-prompt">Don’t want to always return your prompt?<a class="anchor" aria-label="anchor" href="#dont-want-to-always-return-your-prompt"></a>
+</h3>
+<p>By default, the generated out will always display your prompt before
+returning the generated output. You can disable this behavior by
+providing the <code>--no-display-prompt</code> flag.</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">%%bash</span> <span class="at">-s</span> <span class="st">"</span><span class="va">$MODEL</span><span class="st">"</span> <span class="st">"</span><span class="va">$PROMPT_FILE</span><span class="st">"</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="dt">\</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>    <span class="at">--model</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>    <span class="at">--file</span>  <span class="st">"</span><span class="va">$2</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>    <span class="at">--no-display-prompt</span></span></code></pre>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="interactive-modes">Interactive Modes<a class="anchor" aria-label="anchor" href="#interactive-modes"></a>
+</h2>
+<p>The <code>llama-cli</code> program offers a seamless way to interact
+with models which allows users to engage in real-time conversations or
+provide instructions for specific tasks.</p>
+<ul>
+<li>
+<code>-i, --interactive</code>: Run the program in interactive mode,
+allowing users to engage in real-time conversations or provide specific
+instructions to the model.</li>
+<li>
+<code>--interactive-first</code>: Run the program in interactive
+mode and immediately wait for user input before starting the text
+generation.</li>
+<li>
+<code>-cnv,  --conversation</code>: Run the program in conversation
+mode (does not print special tokens and suffix/prefix, use default chat
+template) (default: false)</li>
+<li>
+<code>--color</code>: Enable colorized output to differentiate
+visually distinguishing between prompts, user input, and generated
+text.</li>
+</ul>
+<p>By understanding and utilizing these interaction options, you can
+create engaging and dynamic experiences with your models, tailoring the
+text generation process to your specific needs.</p>
+<p>In interactive mode, users can participate in text generation by
+injecting their input during the process. Users can press
+<code>Ctrl+C</code> at any time to interject and type their input,
+followed by pressing <code>Return</code> to submit it to the LLaMA
+model. To submit additional lines without finalizing input, users can
+end the current line with a backslash (<code>\</code>) and continue
+typing.</p>
+<div class="section level3">
+<h3 id="interactive-example">
+<code>--interactive</code> example<a class="anchor" aria-label="anchor" href="#interactive-example"></a>
+</h3>
+<p>Open a new terminal and type the following command.</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="va">MODEL</span><span class="op">=</span><span class="st">'./models/gemma-1.1-7b-it.Q4_K_M.gguf'</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="dt">\</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>    <span class="at">--model</span> <span class="st">"</span><span class="va">$MODEL</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>    <span class="at">--interactive</span> <span class="dt">\</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>    <span class="at">--color</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="interactive-first-example">
+<code>--interactive-first</code> example<a class="anchor" aria-label="anchor" href="#interactive-first-example"></a>
+</h3>
+<p>Open a new terminal and type the following command.</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="va">MODEL</span><span class="op">=</span><span class="st">'./models/gemma-1.1-7b-it.Q4_K_M.gguf'</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="dt">\</span></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>    <span class="at">--model</span> <span class="st">"</span><span class="va">$MODEL</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>    <span class="at">--interactive-first</span> <span class="dt">\</span></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>    <span class="at">--color</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="conversation-example">
+<code>--conversation</code> example<a class="anchor" aria-label="anchor" href="#conversation-example"></a>
+</h3>
+<p>Open a new terminal and type the following command.</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="va">MODEL</span><span class="op">=</span><span class="st">'./models/gemma-1.1-7b-it.Q4_K_M.gguf'</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="dt">\</span></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>    <span class="at">--model</span> <span class="st">"</span><span class="va">$MODEL</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>    <span class="at">--conversation</span> <span class="dt">\</span></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>    <span class="at">--color</span></span></code></pre>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="context-management">Context Management<a class="anchor" aria-label="anchor" href="#context-management"></a>
+</h2>
+<p>During text generation, models have a limited context size, which
+means they can only consider a certain number of tokens from the input
+and generated text. When the context fills up, the model resets
+internally, otentially losing some information from the beginning of the
+conversation or instructions. Context management options help maintain
+continuity and coherence in these situations.</p>
+<div class="section level3">
+<h3 id="context-size">Context Size<a class="anchor" aria-label="anchor" href="#context-size"></a>
+</h3>
+<p>The simplest way to manage the context size is to set the size of the
+prompt context directly using <code>--ctx-size</code>. By default, the
+context size will be inferred from the model file.</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">%%bash</span> <span class="at">-s</span> <span class="st">"</span><span class="va">$MODEL</span><span class="st">"</span> <span class="st">"</span><span class="va">$PROMPT_FILE</span><span class="st">"</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="dt">\</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>    <span class="at">--model</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>    <span class="at">--file</span>  <span class="st">"</span><span class="va">$2</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>    <span class="at">--ctx-size</span> 256</span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="keep-prompt">Keep Prompt<a class="anchor" aria-label="anchor" href="#keep-prompt"></a>
+</h3>
+<p>The <code>--keep</code> option allows users to retain the original
+prompt when the model runs out of context, ensuring a connection to the
+initial instruction or conversation topic is maintained. Using the
+<code>--keep N</code> option you can directly specify the number of
+tokens from the initial prompt to retain when the model resets its
+internal context. By default, this value is set to 0 (meaning no tokens
+are kept). Use <code>-1</code> to retain all tokens from the initial
+prompt.</p>
+<div class="codewrapper sourceCode" id="cb19">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">%%bash</span> <span class="at">-s</span> <span class="st">"</span><span class="va">$MODEL</span><span class="st">"</span> <span class="st">"</span><span class="va">$PROMPT_FILE</span><span class="st">"</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="ex">llama-cli</span> <span class="dt">\</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>    <span class="at">--model</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>    <span class="at">--file</span>  <span class="st">"</span><span class="va">$2</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a>    <span class="at">--ctx-size</span> 256 <span class="dt">\</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>    <span class="at">--keep</span> <span class="at">-1</span></span></code></pre>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Key Points</h3>
+<div class="callout-content">
+<ul>
+<li>keypoint 1</li>
+<li>keypoint 2</li>
+</ul>
+</div>
+</div>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</div>
+</div>
+</div></section><section id="aio-llama-cli"><p>Content from <a href="llama-cli.html">Using the LLaMA C++ CLI</a></p>
 <hr>
 <p>Last updated on 2024-10-29 |
 
