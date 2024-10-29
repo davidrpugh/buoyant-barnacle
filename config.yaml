@@ -67,6 +67,7 @@ contact: 'david.pugh@kaust.edu.sa' # FIXME
 # Order of episodes in your lesson
 episodes: 
 - introduction.md
+- 00-llama-cpp-basics.md
 - llama-cli.md
 - llama-server.md
 - llama-quantize.md
