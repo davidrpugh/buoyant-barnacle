@@ -1,3 +1,19 @@
+---
+title: "Using the LLaMA C++ CLI" # Episode title
+teaching: 5   # teaching time in minutes
+exercises: 10 # exercise time in minutes
+---
+
+:::::: questions
+ - question 1
+ - question 2
+::::::
+
+:::::: objectives
+ - objective 1
+ - objective 2
+::::::
+
 # Getting started with LLaMA C++
 
 ## Checking your LLaMA C++ installation
@@ -82,8 +98,6 @@ MODEL = "../models/gemma-1.1-7b-it.Q4_K_M.gguf"
 
 After downloading the model file we can just pass the path to the model file as a command line argument using `-m` or `--model` to specify the path to the GGUF model file together with a prompt using the `--prompt` argument to generate a response.
 
-
-
 ```bash
 %%bash -s "$MODEL"
 
@@ -96,8 +110,6 @@ llama-cli \
 ### More elaborate prompting using `--file`
 
 You can also prompt a model by providing one or more prompts stored in a file using the `--file` option. This is useful when you are working with longer prompts.
-
-
 
 ```python
 language = "English"
@@ -246,7 +258,8 @@ llama-cli \
 
 ```
 
+:::::: keypoints
+ - keypoint 1
+ - keypoint 2
+::::::
 
-```python
-
-```
