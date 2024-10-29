@@ -68,6 +68,7 @@ contact: 'david.pugh@kaust.edu.sa' # FIXME
 episodes: 
 - introduction.md
 - llama-cli.md
+- llama-server.md
 
 # Information for Learners
 learners: 

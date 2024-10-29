@@ -55,6 +55,9 @@
     <loc>https://carpentries.github.io/workbench-template-md/instructor/llama-cli.html</loc>
   </url>
   <url>
+    <loc>https://carpentries.github.io/workbench-template-md/instructor/llama-server.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries.github.io/workbench-template-md/instructor/profiles.html</loc>
   </url>
   <url>
@@ -71,6 +74,9 @@
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/llama-cli.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries.github.io/workbench-template-md/llama-server.html</loc>
   </url>
   <url>
     <loc>https://carpentries.github.io/workbench-template-md/profiles.html</loc>
