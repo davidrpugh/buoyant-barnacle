@@ -21,7 +21,7 @@ carpentry_description: 'Gen AI Carpentry'
 title: 'LLaMA C++' # FIXME
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: ~ # FIXME
+created: 2024-10-29 # FIXME
 
 # Comma-separated list of keywords for the lesson
 keywords: 'generative-ai, ai, large-language-models, llms'
