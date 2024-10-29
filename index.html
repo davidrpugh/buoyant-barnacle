@@ -329,32 +329,70 @@ FIXME: place any data you want learners to use in `episodes/data` and then use
 --><p>Download the <a href="https://example.com/FIXME" class="external-link">data zip file</a>
 and unzip it to your Desktop</p>
 </section><section><h2 class="section-heading" id="software-setup">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a></h2>
-<hr class="half-width"><div id="details" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
+<hr class="half-width"><div class="section level3">
+<h3 id="clone-the-github-repository">Clone the GitHub repository<a class="anchor" aria-label="anchor" href="#clone-the-github-repository"></a></h3>
+<p>The instructions below will walk you through the process of
+installing the software required for these lessons using the environment
+configuration files and build scripts in the <a href="https://github.com/kaust-generative-ai/local-deployment-llama-cpp" class="external-link">kaust-generative-ai/local-deployment-llama-cpp</a>
+repository on GitHub.</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/kaust-generative-ai/local-deployment-llama-cpp.git</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="bu">cd</span> local-deployment-llama-cpp/</span></code></pre>
 </div>
-<div id="details" class="callout-inner">
-<h3 class="callout-title">Details</h3>
-<div class="callout-content">
-<p>Setup for different systems can be presented in dropdown menus via a
-<code>spoiler</code> tag. They will join to this discussion block, so
-you can give a general overview of the software used in this lesson here
-and fill out the individual operating systems (and potentially add more,
-e.g. online setup) in the solutions blocks.</p>
+</div>
+<div class="section level3">
+<h3 id="install-miniforge-conda-mamba">Install Miniforge, Conda, Mamba<a class="anchor" aria-label="anchor" href="#install-miniforge-conda-mamba"></a></h3>
+<p>If you haven’t already done so, install <a href="https://github.com/conda-forge/miniforge" class="external-link">Miniforge</a>. Miniforge
+provides minimal installers for <a href="https://conda.io/" class="external-link">Conda</a>
+and <a href="https://github.com/mamba-org/mamba" class="external-link">Mamba</a> specific to
+<a href="https://conda-forge.org/" class="external-link">conda-forge</a>, with the following
+features pre-configured:</p>
+<ul><li>Packages in the base environment are obtained from the
+<code>conda-forge</code> channel.</li>
+<li>The <code>conda-forge</code> channel is set as the default (and
+only) channel.</li>
+</ul><p>Conda/mamba will be the primary package managers used to install the
+required Python dependencies. For convenience, a script is included that
+will download and install Miniforge, Conda, and Mamba. You can run the
+script using the following command.</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">./bin/install-miniforge.sh</span></span></code></pre>
 </div>
 </div>
+<div class="section level3">
+<h3 id="create-the-conda-environment">Create the Conda environment<a class="anchor" aria-label="anchor" href="#create-the-conda-environment"></a></h3>
+<p>Create the Conda environment in a sub-directory <code>./env</code>of
+your project directory by running the following shell script.</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">./bin/create-conda-env.sh</span></span></code></pre>
 </div>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Windows
+  Support for Metal GPU acceleration (Mac ARM)
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
-<p>Use PuTTY</p>
+<p>In order to support Metal GPU acceleration you need to install a few
+extra dependecies. These dependencies are added to the
+<code>environment-metal-gpu.yml</code> and
+<code>requirements-metal-gpu.txt</code> files. Create the Conda
+environment in a sub-directory <code>./env</code>of your project
+directory by running the following shell script.</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">./bin/create-conda-env.sh</span> environment-metal-gpu.yml</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -364,35 +402,230 @@ e.g. online setup) in the solutions blocks.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  MacOS
+  Support for NVIDIA GPU acceleration
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
-<p>Use Terminal.app</p>
+<p>In order to support Metal GPU acceleration you need to install a few
+extra dependecies. These dependencies are added to the
+<code>environment-nvidia-gpu.yml</code> and
+<code>requirements-nvidia-gpu.txt</code> files. Create the Conda
+environment in a sub-directory <code>./env</code>of your project
+directory by running the following shell script.</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">./bin/create-conda-env.sh</span> environment-nvidia-gpu.yml</span></code></pre>
 </div>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="install-llama-c">Install LLaMA C++<a class="anchor" aria-label="anchor" href="#install-llama-c"></a></h3>
+<p>For convenience there is an installer script which can be used to
+download pre-compiled [LLaMA C++][LLaMA C++](<a href="https://github.com/ggerganov/llama.cpp" class="external-link uri">https://github.com/ggerganov/llama.cpp</a>) binaries for
+various OS and CPU architectures and install the binaries into the
+<code>bin/</code> directory of the Conda environment. You can find the
+latest <a href="https://github.com/ggerganov/llama.cpp/releases" class="external-link">release</a> for
+LLaMA C++ on GitHub and pass the link to the zip archive for you
+specific release to the script as a command line argument.</p>
 <div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
   <h3 class="accordion-header" id="headingSpoiler3">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
-  Linux
+  Mac ARM
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
-<p>Use Terminal</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="va">DOWNLOAD_URL</span><span class="op">=</span>https://github.com/ggerganov/llama.cpp/releases/download/</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="va">TAG</span><span class="op">=</span>b3868</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="va">RELEASE_ARCHIVE</span><span class="op">=</span>lllama-b3868-bin-macos-arm64.zip</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="ex">./bin/install-llama-cpp.sh</span> <span class="st">"</span><span class="va">$DOWNLOAD_URL</span><span class="st">"</span>/<span class="st">"</span><span class="va">$TAG</span><span class="st">"</span>/<span class="st">"</span><span class="va">$RELEASE_ARCHIVE</span><span class="st">"</span></span></code></pre>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler4" aria-expanded="false" aria-controls="collapseSpoiler4">
+  <h3 class="accordion-header" id="headingSpoiler4">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Mac Intel
+  </h3>
+</button>
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="va">DOWNLOAD_URL</span><span class="op">=</span>https://github.com/ggerganov/llama.cpp/releases/download/</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="va">TAG</span><span class="op">=</span>b3868</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="va">RELEASE_ARCHIVE</span><span class="op">=</span>llama-b3868-bin-macos-x64.zip</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="ex">./bin/install-llama-cpp.sh</span> <span class="st">"</span><span class="va">$DOWNLOAD_URL</span><span class="st">"</span>/<span class="st">"</span><span class="va">$TAG</span><span class="st">"</span>/<span class="st">"</span><span class="va">$RELEASE_ARCHIVE</span><span class="st">"</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler5" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler5" aria-expanded="false" aria-controls="collapseSpoiler5">
+  <h3 class="accordion-header" id="headingSpoiler5">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Ubuntu
+  </h3>
+</button>
+<div id="collapseSpoiler5" class="accordion-collapse collapse" aria-labelledby="headingSpoiler5" data-bs-parent="#accordionSpoiler5">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="va">DOWNLOAD_URL</span><span class="op">=</span>https://github.com/ggerganov/llama.cpp/releases/download/</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="va">TAG</span><span class="op">=</span>b3868</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="va">RELEASE_ARCHIVE</span><span class="op">=</span>llama-b3868-bin-ubuntu-x64.zip</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="ex">./bin/install-llama-cpp.sh</span> <span class="st">"</span><span class="va">$DOWNLOAD_URL</span><span class="st">"</span>/<span class="st">"</span><span class="va">$TAG</span><span class="st">"</span>/<span class="st">"</span><span class="va">$RELEASE_ARCHIVE</span><span class="st">"</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler6" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler6" aria-expanded="false" aria-controls="collapseSpoiler6">
+  <h3 class="accordion-header" id="headingSpoiler6">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Windows
+  </h3>
+</button>
+<div id="collapseSpoiler6" class="accordion-collapse collapse" aria-labelledby="headingSpoiler6" data-bs-parent="#accordionSpoiler6">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="va">DOWNLOAD_URL</span><span class="op">=</span>https://github.com/ggerganov/llama.cpp/releases/download/</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="va">TAG</span><span class="op">=</span>b3868</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="va">RELEASE_ARCHIVE</span><span class="op">=</span>llama-b3868-bin-win-avx512-x64.zip</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="ex">./bin/install-llama-cpp.sh</span> <span class="st">"</span><span class="va">$DOWNLOAD_URL</span><span class="st">"</span>/<span class="st">"</span><span class="va">$TAG</span><span class="st">"</span>/<span class="st">"</span><span class="va">$RELEASE_ARCHIVE</span><span class="st">"</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="building-llama-c-from-source">Building LLaMA C++ from source<a class="anchor" aria-label="anchor" href="#building-llama-c-from-source"></a></h3>
+<p>If there isn’t an official release available for your target
+operating system, then you will need to build LLaMA C++ from source.
+Don’t worry, we have created build scripts to make this process as
+painless as possible. After creating the Conda environment you can build
+LLaMA C++ by running the following command.</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">conda</span> run <span class="at">--prefix</span> ./env <span class="at">--live-stream</span> ./bin/build-llama-cpp.sh</span></code></pre>
+</div>
+<p>This command does the following.</p>
+<ol style="list-style-type: decimal"><li>Properly configures the Conda environment using the
+<code>conda run</code> command prior to running the
+<code>build-llama-cpp.sh</code> script.</li>
+<li>Clones [LLaMA C++](<a href="https://github.com/ggerganov/llama.cpp" class="external-link uri">https://github.com/ggerganov/llama.cpp</a> into
+<code>./src/llama-cpp</code>.</li>
+<li>Builds LLaMA C++ with support for CPU acceleration using OpenBlas in
+<code>./build/llama-cpp</code>.</li>
+<li>Installs the binaries into the <code>bin/</code> directory of the
+Conda environment.</li>
+<li>Removes the <code>./src/llama-cpp</code> directory as it is no
+longer needed.</li>
+<li>Removes the <code>./build/llama-cpp</code> directory as it is no
+longer needed.</li>
+</ol><div id="install-xcode-and-command-line-tools" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="install-xcode-and-command-line-tools" class="callout-inner">
+<h3 class="callout-title">Install XCode and Command Line Tools</h3>
+<div class="callout-content">
+<p>If you are using Mac OS, then you will need to install <a href="https://developer.apple.com/xcode/" class="external-link">XCode</a> and then run the
+following command to install XCode Command Line Tools in order to build
+from source.</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler7" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler7" aria-expanded="false" aria-controls="collapseSpoiler7">
+  <h3 class="accordion-header" id="headingSpoiler7">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Support for Metal GPU acceleration (Mac ARM)
+  </h3>
+</button>
+<div id="collapseSpoiler7" class="accordion-collapse collapse" aria-labelledby="headingSpoiler7" data-bs-parent="#accordionSpoiler7">
+<div class="accordion-body">
+<p>After creating the Conda environment you can build LLaMA C++ by
+running the following command.</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">conda</span> run <span class="at">--prefix</span> ./env <span class="at">--live-stream</span> ./bin/build-llama-cpp-metal-gpu.sh</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSpoiler8" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler8" aria-expanded="false" aria-controls="collapseSpoiler8">
+  <h3 class="accordion-header" id="headingSpoiler8">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Support for NVIDIA GPU acceleration
+  </h3>
+</button>
+<div id="collapseSpoiler8" class="accordion-collapse collapse" aria-labelledby="headingSpoiler8" data-bs-parent="#accordionSpoiler8">
+<div class="accordion-body">
+<p>After creating the Conda environment you can build LLaMA C++ by with
+support for GPU acceleration by running the following command.</p>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">conda</span> run <span class="at">--prefix</span> ./env <span class="at">--live-stream</span> ./bin/build-llama-cpp-nvidia-gpu.sh</span></code></pre>
+</div>
+<p>For a detailed discussion of additional NVIDIA GPU compilation
+options that might improve performance on particular GPU architectures
+see the <a href="https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md#cuda" class="external-link">LLaMA
+C++ build documentation</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="activating-the-conda-environment">Activating the Conda environment<a class="anchor" aria-label="anchor" href="#activating-the-conda-environment"></a></h3>
+<p>Once the new environment has been created you can activate the
+environment with the following command.</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="ex">conda</span> activate ./env</span></code></pre>
 </div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="introduction.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
