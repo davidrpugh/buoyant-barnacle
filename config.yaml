@@ -67,6 +67,7 @@ contact: 'david.pugh@kaust.edu.sa' # FIXME
 # Order of episodes in your lesson
 episodes: 
 - introduction.md
+- llama-cli.md
 
 # Information for Learners
 learners: 
