@@ -69,6 +69,7 @@ episodes:
 - introduction.md
 - llama-cli.md
 - llama-server.md
+- llama-quantize.md
 
 # Information for Learners
 learners: 
