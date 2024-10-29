@@ -10,6 +10,6 @@
 "episodes/llama-server.md" "4bb0529212ab463bc3eb7c7739dae7ba" "site/built/llama-server.md" "2024-10-29"
 "episodes/llama-quantize.md" "9abf5bf1a06972a020bd31dc788fa84e" "site/built/llama-quantize.md" "2024-10-29"
 "instructors/instructor-notes.md" "cae72b6712578d74a49fea7513099f8c" "site/built/instructor-notes.md" "2023-03-16"
-"learners/setup.md" "6a7d0dd5c91637b07a8691c21cbb89aa" "site/built/setup.md" "2024-10-29"
+"learners/setup.md" "7ee3030ce01fcea5c6cb0183e3f9c006" "site/built/setup.md" "2024-10-29"
 "learners/build.md" "95cec7fbf076d62538f183af61e2c82e" "site/built/build.md" "2024-10-29"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2022-04-22"

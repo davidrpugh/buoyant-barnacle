@@ -71,7 +71,7 @@ In order to support Metal GPU acceleration you need to install a few extra depen
 
 ::::::::::::::::::::::::
 
-### Install LLaMA C++ 
+## Install LLaMA C++ 
 
 For convenience there is an installer script which can be used to download pre-compiled [LLaMA C++][LLaMA C++](https://github.com/ggerganov/llama.cpp) binaries for various OS and CPU architectures and install the binaries into the `bin/` directory of the Conda environment. You can find the latest [release](https://github.com/ggerganov/llama.cpp/releases) for LLaMA C++ on GitHub and pass the link to the zip archive for you specific release to the script as a command line argument.
 
@@ -126,7 +126,7 @@ RELEASE_ARCHIVE=llama-b3868-bin-win-avx512-x64.zip
 
 ::::::::::::::::::::::::
 
-### Building LLaMA C++ from source
+## Building LLaMA C++ from source
 
 If there isn't an official release available for your target operating system, then you will need to build LLaMA C++ from source. Don't worry, we have created build scripts to make this process as painless as possible. After creating the Conda environment you can build LLaMA C++ by running the following command.
 
